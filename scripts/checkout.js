@@ -2,6 +2,7 @@ import {cart, removeFromCart} from "../data/cart.js";
 import {products} from "../data/products.js";
 import * as util from "/scripts/utils/money.js"
 
+console.log(dayjs())
 let cartSummaryHtml = '';
 
 cart.forEach((cartItem)=>{

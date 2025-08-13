@@ -9,6 +9,7 @@ import {hello} from "https://unpkg.com/supersimpledev@1.0.1/hello.esm.js";
 // Each file can have only 1 DEFAULT
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import {deliveryOptions, getDeliveryOptions} from "../../data/deliveryOptions.js";
+import {renderPaymentSummary} from "./paymentSummary.js";
 
 
 /** *************************
@@ -16,12 +17,6 @@ import {deliveryOptions, getDeliveryOptions} from "../../data/deliveryOptions.js
  * ************************** */
 
 export function renderOrderSummary() {
-
-
-    const today = dayjs();
-    const deliveryDate = today.add(7, 'days');
-    console.log(deliveryDate.format("dddd, MMMM D"));
-
 
     let cartSummaryHtml = '';
 
@@ -125,7 +120,7 @@ export function renderOrderSummary() {
     document.querySelector('.js-order-summary').innerHTML = cartSummaryHtml;
 
 
-    // Delete link
+   /** Delete link */
     // deleting items form the cart and HTML page
     document.querySelectorAll('.js-delete-link')
         .forEach((link) => {
@@ -137,9 +132,10 @@ export function renderOrderSummary() {
                 const container = document.querySelector(
                     `.js-cart-item-container-${productId}`
                 );
-
                 // use .remove()
                 container.remove();
+
+                renderPaymentSummary();
             })
         });
 
@@ -160,6 +156,9 @@ export function renderOrderSummary() {
 
                 // Render the whole page when user change the delivery options
                 renderOrderSummary();
+
+                // Render the payment summary section when we select different delivery option
+                renderPaymentSummary();
             })
         });
 }

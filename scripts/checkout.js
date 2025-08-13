@@ -1,5 +1,5 @@
 // Following is a "NAMED" export approach
-import {cart, removeFromCart} from "../data/cart.js";
+import {cart, removeFromCart, updateDeliveryOption} from "../data/cart.js";
 import {products} from "../data/products.js";
 import * as util from "/scripts/utils/money.js"
 import {hello} from "https://unpkg.com/supersimpledev@1.0.1/hello.esm.js";
@@ -47,6 +47,8 @@ cart.forEach((cartItem)=>{
     const today = dayjs();
     const deliveryDate = today.add( deliveryOption.deliveryDays,'days');
     const dateString = deliveryDate.format("dddd, MMMM D");
+
+    /** TODO start video from 14:43 */
 
     cartSummaryHtml +=`<div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
             <div class="delivery-date">
@@ -109,7 +111,9 @@ function deliveryOptionsHTML(matchingProduct, cartItem){
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
         html += `
-             <div class="delivery-option">
+             <div class="delivery-option js-delivery-option" 
+             data-product-id="${matchingProduct.id}" 
+             data-delivery-option-id="${deliveryOption.id}">
                   <input type="radio"
                     ${isChecked ? 'checked' : ''}
                     class="delivery-option-input"
@@ -150,3 +154,20 @@ document.querySelectorAll('.js-delete-link')
            container.remove();
        })
     });
+
+
+document.querySelectorAll(".js-delivery-option")
+    .forEach((element)=>{
+        element.addEventListener('click', ()=>{
+
+            // APPROACH_1
+            //const productId = element.dataset.productId;
+            //const deliveryOptionId = element.dataset.deliveryOptionId;
+
+            // APPROACH_2 : Shorthand property, same as above 2 lines, so we can replace then with this single line
+            const {productId, deliveryOptionId} = element.dataset;
+
+            // Update Delivery Option Id
+            updateDeliveryOption(productId, deliveryOptionId);
+        })
+    })

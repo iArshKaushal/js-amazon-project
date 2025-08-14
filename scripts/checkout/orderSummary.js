@@ -34,7 +34,7 @@ export function renderOrderSummary() {
         const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
         const dateString = deliveryDate.format("dddd, MMMM D");
 
-        /** TODO start video from 14:43 */
+        /** TODO start video from 15:32 */
 
         cartSummaryHtml += `<div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
                 <div class="delivery-date">

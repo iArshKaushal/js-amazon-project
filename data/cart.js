@@ -50,6 +50,7 @@ export function addToCart(productId) {
             deliveryOptionId: '1'
         });
     }
+    console.log("Function get called with pID = " + productId);
     saveToStorage();
 }
 

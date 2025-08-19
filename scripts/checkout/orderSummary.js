@@ -34,9 +34,9 @@ export function renderOrderSummary() {
         const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
         const dateString = deliveryDate.format("dddd, MMMM D");
 
-        /** TODO start video from 15:32 */
 
-        cartSummaryHtml += `<div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+        // Here in the following code 'js-cart-item-container' class is used for TEST cases
+        cartSummaryHtml += `<div class="cart-item-container js-cart-item-container js-cart-item-container-${matchingProduct.id}">
                 <div class="delivery-date">
                   Delivery date: ${dateString}
                 </div>
@@ -52,14 +52,18 @@ export function renderOrderSummary() {
                     <div class="product-price">
                       $${util.formatCurrency(matchingProduct.priceCents)}
                     </div>
-                    <div class="product-quantity">
+                    <div class="product-quantity js-product-quantity-${matchingProduct.id}">
                       <span>
                         Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                       </span>
                       <span class="update-quantity-link link-primary">
                         Update
                       </span>
-                      <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
+                      <span class="delete-quantity-link 
+                      link-primary 
+                      js-delete-link
+                      js-delete-link-${matchingProduct.id}" 
+                      data-product-id="${matchingProduct.id}">
                         Delete
                       </span>
                     </div>

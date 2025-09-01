@@ -730,3 +730,38 @@ export const products = [
       }
       return new Products(productDetails);
     });
+
+
+
+
+// Practice code
+// Built in classes
+/*const date = new Date();
+console.log(date);
+console.log(date.toLocaleDateString());*/
+
+//console.log(this);
+
+/*
+const object2 = {
+  a: 2,
+  b: this.b
+};
+*/
+
+/*
+function logThis(){
+  console.log(this);
+}
+
+logThis();
+logThis.call('hello');
+*/
+
+/*
+this
+const object3 = {
+  method: ()=>{
+    console.log(this);
+  }
+};*/

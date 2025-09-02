@@ -11,3 +11,5 @@ xhr.addEventListener('load', ()=>{
 xhr.open('GET', 'https://supersimplebackend.dev/products/first');
 xhr.send();
 //xhr.response; // Async code
+
+/** TODO start video from 20:04:52 */

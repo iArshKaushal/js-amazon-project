@@ -94,7 +94,7 @@ describe('Test Suits: renderOrderSummary', ()=>{
         // here we are checking that now product2 will be at the first position in the cart
         expect(cart[0].productId).toEqual(productId2);
 
-        /** TODO start video from 17:19:52 */
+
 
     });
 
